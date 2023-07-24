@@ -30,6 +30,4 @@ We encourage you to contribute to this project! There are several ways you can c
 4. **Request a solution**: If you're struggling with a problem and would like to see a solution, open an issue as a 
    solution request.
 
-## License
-
 Let's get coding and make this arena filled with robust and efficient Go solutions!

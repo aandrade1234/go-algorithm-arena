@@ -1,6 +1,10 @@
-package main
+package algorithms
 
-import "fmt"
+import (
+	"errors"
+
+	"github.com/aandrade1234/go-algorithm-arena/challenges"
+)
 
 // https://www.hackerrank.com/challenges/birthday-cake-candles/problem
 //
@@ -8,7 +12,7 @@ import "fmt"
 // of their total age. They will only be able to blow out the tallest of the candles. Count how many candles are tallest.
 //
 // Example
-// candles = [4,4,1,3]
+// candles = [4, 4, 1, 3]
 //
 // The maximum height candles are 4 units high. There are 2 of them, so return 2.
 //
@@ -23,7 +27,7 @@ import "fmt"
 // int: the number of candles that are tallest
 //
 // Input Format
-// The first line contains a single integer, n, the size of candles.
+// The first line contains a single integer n, the size of candles.
 // The second line contains n space-separated integers, where each integer i describes the height of candles[i].
 //
 // Constraints
@@ -40,18 +44,23 @@ import "fmt"
 // Explanation 0
 // Candle heights are [3, 2, 1, 3]. The tallest candles are 3 units, and there are 2 of them.
 
-func main() {
-	data := []int{3, 2, 1, 3}
+type BirthdayCandles struct {
+	challenges.BaseChallenge
+}
 
-	output := solution1(data)
-	fmt.Println(output)
+func (*BirthdayCandles) GetName() string {
+	return "birthday-candles(source: hackerrank)"
+}
 
-	output = solution2(data)
-	fmt.Println(output)
+func (b *BirthdayCandles) Execute() error {
+	err := b.BaseExecute("solution 1", b.GetInputs(), b.GetOutputs(), b.solution1)
+	return errors.Join(err, b.BaseExecute("solution 2", b.GetInputs(), b.GetOutputs(), b.solution2))
 }
 
 // time complexity O(n) space complexity O(1)
-func solution2(candles []int) int {
+func (*BirthdayCandles) solution2(inputs any) any {
+	candles := inputs.([]int)
+
 	max := 0
 	count := 0
 
@@ -68,7 +77,9 @@ func solution2(candles []int) int {
 }
 
 // time complexity O(n) space complexity O(n)
-func solution1(candles []int) int {
+func (*BirthdayCandles) solution1(inputs any) any {
+	candles := inputs.([]int)
+
 	tallestCandle := 0
 	cake := make(map[int]int)
 
@@ -81,4 +92,17 @@ func solution1(candles []int) int {
 	}
 
 	return cake[tallestCandle]
+}
+
+func (*BirthdayCandles) GetInputs() []any {
+	return []any{
+		[]int{3, 2, 1, 3},
+		[]int{18, 90, 90, 13, 90, 75, 90, 8, 90, 43},
+		[]int{82, 49, 82, 82, 41, 82, 15, 63, 38, 25},
+		[]int{44, 53, 31, 27, 77, 60, 66, 77, 26, 36},
+	}
+}
+
+func (*BirthdayCandles) GetOutputs() []any {
+	return []any{2, 5, 4, 2}
 }

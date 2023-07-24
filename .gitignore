@@ -10,6 +10,9 @@
 # Go workspace file
 go.work
 
+# IDEs
+.idea
+
 # Allowlist
 !/.gitignore
 !*.go

@@ -1,9 +1,10 @@
-package main
+package algorithms
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
+
+	"github.com/aandrade1234/go-algorithm-arena/challenges"
 )
 
 // https://www.coderbyte.com/editor/Longest%20Word:Go
@@ -19,15 +20,22 @@ import (
 // Input: "I love dogs"
 // Output: love
 
-func main() {
-	input := "I love dogs"
+type LongestWord struct {
+	challenges.BaseChallenge
+}
 
-	output := solution1(input)
-	fmt.Println(output)
+func (*LongestWord) GetName() string {
+	return "longest-word(source: coderbyte)"
+}
+
+func (b *LongestWord) Execute() error {
+	return b.BaseExecute("solution 1", b.GetInputs(), b.GetOutputs(), b.solution1)
 }
 
 // solution1 time complexity O(n) and space complexity is O(m) where m is the number of words created by split
-func solution1(sen string) string {
+func (*LongestWord) solution1(input any) any {
+	sen := input.(string)
+
 	output := ""
 	reg, _ := regexp.Compile("[^a-zA-Z0-9]+")
 
@@ -41,4 +49,18 @@ func solution1(sen string) string {
 	}
 
 	return output
+}
+
+func (*LongestWord) GetInputs() []any {
+	return []any{
+		"fun&!! time",
+		"I love dogs",
+	}
+}
+
+func (*LongestWord) GetOutputs() []any {
+	return []any{
+		"time",
+		"love",
+	}
 }
