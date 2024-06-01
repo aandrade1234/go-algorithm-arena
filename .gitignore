@@ -1,22 +1,2 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.out
-*.test
-
-# Go workspace file
-go.work
-
-# IDEs
 .idea
-
-# Allowlist
-!/.gitignore
-!*.go
-!go.sum
-!go.mod
-!README.md
-!*/
+.vscode

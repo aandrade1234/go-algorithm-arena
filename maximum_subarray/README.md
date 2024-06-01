@@ -24,3 +24,5 @@ Given an integer array `nums, find the subarray with the largest sum, and return
 
 - `1 <= nums.length <= 10^5`
 - `-10^4 <= nums[i] <= 10^4`
+
+Source: [Leetcode](https://leetcode.com/problems/maximum-subarray/description/)
