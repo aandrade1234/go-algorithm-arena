@@ -24,3 +24,5 @@ You may assume the given input string is always valid. For example, `"01:34"`, `
 - `time` is a valid time in the form `"HH:MM"`.
 - `0 <= HH < 24`
 - `0 <= MM < 60`
+
+Source: [Leetcode](https://leetcode.com/problems/next-closest-time/submissions/1280017933/)
