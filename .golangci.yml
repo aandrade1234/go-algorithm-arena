@@ -278,7 +278,7 @@ linters-settings:
     # A comma-separated list of prefixes, which, if set, checks import paths
     # with the given prefixes are grouped after 3rd-party packages.
     # Default: ""
-    local-prefixes: github.com/Gympass/,braze-integration-worker/
+    local-prefixes: github.com/aandrade1234/,braze-integration-worker/
 
   gomodguard:
     blocked:
@@ -331,9 +331,6 @@ linters-settings:
   importas:
     # List of aliases [Default: []]
     alias:
-      # gcore
-      - pkg: github.com/Gympass/gcore/v3/middleware
-        alias: gmiddleware
       # 3rd party packages
       - pkg: github.com/swaggo/http-swagger
         alias: httpswagger
@@ -353,8 +350,8 @@ linters-settings:
     allow:
       - Iterator
       - Response
-      - ^github.com\/Gympass\/.*
-      - ^github.com\/gympass\/.*
+      - ^github.com\/aandrade1234\/.*
+      - ^github.com\/aandrade1234\/.*
       - anon
       - empty
       - error
@@ -591,7 +588,7 @@ linters-settings:
   wrapcheck:
     # An array of strings that specify globs of packages to ignore. [Default: []]
     ignorePackageGlobs:
-      - github.com/Gympass/*
+      - github.com/aandrade1234/*
 
     # An array of strings that specify substrings of signatures to ignore.
     # If this set, it will override the default set of ignored signatures.
