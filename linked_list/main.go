@@ -15,7 +15,7 @@ type LinkedList[T any] struct {
 
 // node represents a node in the linked list.
 type node[T any] struct {
-	value T
+	value *T
 	next  *node[T]
 }
 
@@ -29,11 +29,11 @@ func main() {
 	fmt.Println(list) // Output: [0, 1, 1.5, 2, 3]
 
 	value, _ := list.Remove(2)
-	fmt.Printf("Removed: %v\n", value) // Output: Removed: 1.5
-	fmt.Println(list)                  // Output: [0, 1, 2, 3]
+	fmt.Printf("Removed: %v\n", *value) // Output: Removed: 1.5
+	fmt.Println(list)                   // Output: [0, 1, 2, 3]
 
 	value, _ = list.Get(2)
-	fmt.Printf("Value at index 2: %v\n", value) // Output: Value at index 2: 2
+	fmt.Printf("Value at index 2: %v\n", *value) // Output: Value at index 2: 2
 
 	fmt.Printf("Size: %d\n", list.Size()) // Output: Size: 4
 }
@@ -56,7 +56,7 @@ func (ll *LinkedList[T]) Size() int {
 // Append adds elements to the end of the list.
 func (ll *LinkedList[T]) Append(values ...T) {
 	for _, value := range values {
-		newNode := &node[T]{value: value}
+		newNode := &node[T]{value: &value}
 
 		if ll.IsEmpty() {
 			ll.head = newNode
@@ -65,6 +65,7 @@ func (ll *LinkedList[T]) Append(values ...T) {
 			ll.tail.next = newNode
 			ll.tail = newNode
 		}
+
 		ll.size++
 	}
 }
@@ -72,11 +73,13 @@ func (ll *LinkedList[T]) Append(values ...T) {
 // Prepend adds elements to the beginning of the list.
 func (ll *LinkedList[T]) Prepend(values ...T) {
 	for i := len(values) - 1; i >= 0; i-- {
-		newNode := &node[T]{value: values[i], next: ll.head}
+		newNode := &node[T]{value: &values[i], next: ll.head}
+
 		ll.head = newNode
 		if ll.tail == nil {
 			ll.tail = newNode
 		}
+
 		ll.size++
 	}
 }
@@ -89,9 +92,11 @@ func (ll *LinkedList[T]) Insert(index int, values ...T) error {
 
 	if index == 0 {
 		ll.Prepend(values...)
+
 		return nil
 	} else if index == ll.size {
 		ll.Append(values...)
+
 		return nil
 	}
 
@@ -101,7 +106,7 @@ func (ll *LinkedList[T]) Insert(index int, values ...T) error {
 	}
 
 	for _, value := range values {
-		newNode := &node[T]{value: value, next: prev.next}
+		newNode := &node[T]{value: &value, next: prev.next}
 		prev.next = newNode
 		ll.size++
 		prev = newNode
@@ -111,16 +116,16 @@ func (ll *LinkedList[T]) Insert(index int, values ...T) error {
 }
 
 // Remove removes the element at the specified index.
-func (ll *LinkedList[T]) Remove(index int) (T, error) {
-	var zero T
+func (ll *LinkedList[T]) Remove(index int) (*T, error) {
 	if index < 0 || index >= ll.size {
-		return zero, ErrOutOfBounds
+		return nil, ErrOutOfBounds
 	}
 
-	var removedValue T
+	var removedValue *T
 	if index == 0 {
 		removedValue = ll.head.value
 		ll.head = ll.head.next
+
 		if ll.head == nil {
 			ll.tail = nil
 		}
@@ -129,8 +134,10 @@ func (ll *LinkedList[T]) Remove(index int) (T, error) {
 		for range index - 1 {
 			prev = prev.next
 		}
+
 		removedValue = prev.next.value
 		prev.next = prev.next.next
+
 		if index == ll.size-1 {
 			ll.tail = prev
 		}
@@ -142,14 +149,13 @@ func (ll *LinkedList[T]) Remove(index int) (T, error) {
 }
 
 // Get returns the element at the specified index.
-func (ll *LinkedList[T]) Get(index int) (T, error) {
-	var zero T
+func (ll *LinkedList[T]) Get(index int) (*T, error) {
 	if index < 0 || index >= ll.size {
-		return zero, ErrOutOfBounds
+		return nil, ErrOutOfBounds
 	}
 
 	current := ll.head
-	for i := 0; i < index; i++ {
+	for range index {
 		current = current.next
 	}
 
@@ -160,14 +166,18 @@ func (ll *LinkedList[T]) Get(index int) (T, error) {
 func (ll *LinkedList[T]) String() string {
 	var sb strings.Builder
 	sb.WriteString("[")
+
 	current := ll.head
 	for current != nil {
-		sb.WriteString(fmt.Sprintf("%v", current.value))
+		sb.WriteString(fmt.Sprintf("%v", *current.value))
+
 		if current.next != nil {
 			sb.WriteString(", ")
 		}
+
 		current = current.next
 	}
+
 	sb.WriteString("]")
 
 	return sb.String()
