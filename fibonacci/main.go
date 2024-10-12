@@ -20,6 +20,7 @@ func main() {
 	fmt.Println(findFibonacciRecursive(10))
 }
 
+// findFibonacciInteractive - Big O in time O(n)
 func findFibonacciInteractive(value int) (int, error) {
 	switch {
 	case value < 0:
@@ -36,6 +37,7 @@ func findFibonacciInteractive(value int) (int, error) {
 	return current, nil
 }
 
+// findFibonacciInteractive - Big O in time O(2^n)
 func findFibonacciRecursive(value int) (int, error) {
 	switch {
 	case value < 0:
