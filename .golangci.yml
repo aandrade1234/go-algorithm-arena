@@ -65,7 +65,7 @@ linters:
     - exhaustive # [1.26] Check exhaustiveness of enum switch statements.
     - exhaustruct # [1.46] [generates too many results] Checks if all structure fields are initialized
     - fatcontext # [1.58] Detects nested contexts in loops.
-    - forbidigo # [1.34] Forbids identifiers.
+    #- forbidigo # [1.34] Forbids identifiers.
     - forcetypeassert # [1.38] Finds forced type assertions.
     - funlen # [1.18] Tool for detection of long functions.
     - gci # [1.30][AUTOFIX] Gci controls Go package import order and makes it always deterministic.
