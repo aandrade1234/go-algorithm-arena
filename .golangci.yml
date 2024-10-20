@@ -572,10 +572,15 @@ linters-settings:
     #
     # Default: []
     ignore-decls:
+      - dp [][]int
+      - dp []int
+      - dp int
       - err error
       - i int
       - j int
       - k int
+      - ni int
+      - nj int
 
   whitespace:
     # Enforces newlines (or comments) after every multi-line if statement. [Default: false]
