@@ -7,7 +7,7 @@ func main() {
 	fmt.Println(minCostClimbingStairs([]int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}))
 }
 
-// minCostClimbingStairs time complexity O(n) space complexity O(1)
+// minCostClimbingStairs time complexity O(n) space complexity O(1).
 func minCostClimbingStairs(cost []int) int {
 	if len(cost) == 1 {
 		return cost[0]

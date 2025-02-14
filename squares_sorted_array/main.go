@@ -53,6 +53,7 @@ func squareSortedArray2(nums []int) []int {
 			result[i] = rightSquare
 			right--
 		}
+
 		i--
 	}
 
