@@ -606,6 +606,8 @@ linters-settings:
       - i int
       - j int
       - k int
+      - n int
+      - m int
       - ok bool
       - r *http.Request
       - w http.ResponseWriter
