@@ -85,6 +85,7 @@ func merge1(nums1 []int, m int, nums2 []int, n int) {
 			j++
 		default:
 			copy(nums1, result)
+
 			return
 		}
 	}
