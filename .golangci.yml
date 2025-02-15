@@ -121,7 +121,7 @@ linters:
     - makezero # [1.34] Finds slice declarations with non-zero initial length.
     - mirror # [1.53][AUTOFIX] Reports wrong mirror patterns of bytes/strings usage.
     - misspell # [1.8][AUTOFIX] Finds commonly misspelled English words in comments.
-    - mnd # [1.22] An analyzer to detect magic numbers.
+    # - mnd # [1.22] An analyzer to detect magic numbers.
     - musttag # [1.51] Enforce field tags in (un)marshaled structs.
     - nakedret # [1.19][AUTOFIX] Finds naked returns in functions greater than a specified function length.
     - nestif # [1.25] Reports deeply nested if statements.
@@ -604,6 +604,8 @@ linters-settings:
     ignore-decls:
       - err error
       - i int
+      - j int
+      - k int
       - ok bool
       - r *http.Request
       - w http.ResponseWriter

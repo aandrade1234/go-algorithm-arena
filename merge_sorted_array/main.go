@@ -50,6 +50,7 @@ func merge2(nums1 []int, m int, nums2 []int, n int) {
 			nums1[k] = nums2[j]
 			j--
 		}
+
 		k--
 	}
 
@@ -65,8 +66,10 @@ func merge1(nums1 []int, m int, nums2 []int, n int) {
 	result := make([]int, 0, m+n)
 
 	i, j := 0, 0
+
 	for {
-		if i < m && j < n {
+		switch {
+		case i < m && j < n:
 			if nums1[i] <= nums2[j] {
 				result = append(result, nums1[i])
 				i++
@@ -74,13 +77,13 @@ func merge1(nums1 []int, m int, nums2 []int, n int) {
 				result = append(result, nums2[j])
 				j++
 			}
-		} else if i < m {
+		case i < m:
 			result = append(result, nums1[i])
 			i++
-		} else if j < n {
+		case j < n:
 			result = append(result, nums2[j])
 			j++
-		} else {
+		default:
 			break
 		}
 	}
