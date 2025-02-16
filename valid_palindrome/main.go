@@ -21,7 +21,7 @@ func main() {
 	fmt.Println(isPalindrome2(" "))
 }
 
-// Time complexity O(n), space complexity O(1)
+// Time complexity O(n), space complexity O(1).
 func isPalindrome2(s string) bool {
 	s = strings.ToLower(s)
 
@@ -34,11 +34,13 @@ func isPalindrome2(s string) bool {
 
 		if !isValidRune(rLeft) {
 			left++
+
 			continue
 		}
 
 		if !isValidRune(rRight) {
 			right--
+
 			continue
 		}
 
@@ -57,7 +59,7 @@ func isValidRune(r rune) bool {
 	return unicode.IsDigit(r) || unicode.IsLetter(r)
 }
 
-// Time complexity O(n), space complexity O(1)
+// Time complexity O(n), space complexity O(1).
 func isPalindrome1(s string) bool {
 	s = strings.ToLower(s)
 	s = regex.ReplaceAllString(s, "")

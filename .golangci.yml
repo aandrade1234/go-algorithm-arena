@@ -149,7 +149,6 @@ linters:
     - stylecheck # [1.20][AUTOFIX] Stylecheck is a replacement for golint.
     - tagalign # [1.53][AUTOFIX] Check that struct tags are well aligned.
     - tagliatelle # [1.40] Checks the struct tags.
-    - tenv # [1.43] Tenv is analyzer that detects using os.Setenv instead of t.Setenv since Go1.17.
     - testableexamples # [1.50] Linter checks if examples are testable (have an expected output).
     - testifylint # [1.55][AUTOFIX] Checks usage of github.com/stretchr/testify.
     # - testpackage # [1.25] Linter that makes you use a separate _test package.
@@ -178,6 +177,7 @@ linters:
 #    - nosnakecase # [1.47] Replaced by revive(var-naming).
 #    - scopelint # [1.12] Replaced by exportloopref.
 #    - structcheck # [1.0] Replaced by unused.
+#    - tenv # [1.43] Tenv is analyzer that detects using os.Setenv instead of t.Setenv since Go1.17.
 #    - varcheck # [1.0] Replaced by unused.
 
 # All available settings of specific linters.
@@ -542,12 +542,6 @@ linters-settings:
       rules:
         json: kebab
 
-  tenv:
-    # The option `all` will run against whole test files (`_test.go`) regardless of method/function signatures.
-    # Otherwise, only methods that take `*testing.T`, `*testing.B`, and `testing.TB` as arguments are checked.
-    # [Default: false]
-    all: true
-
   testifylint:
     # Enable all checkers. [Default: false]
     enable-all: true
@@ -608,6 +602,7 @@ linters-settings:
       - k int
       - n int
       - m int
+      - s string
       - ok bool
       - r *http.Request
       - w http.ResponseWriter
