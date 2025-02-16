@@ -8,11 +8,10 @@ func main() {
 	fmt.Println(isSubsequence("", "ahbgdc"))
 	fmt.Println(isSubsequence("aza", "abzba"))
 	fmt.Println(isSubsequence("abbc", "ahbdc"))
-
 }
 
 // Time complexity O(n), Space complexity O(1).
-func isSubsequence(s string, t string) bool {
+func isSubsequence(s, t string) bool {
 	pLeft, bLeft := 0, len(s)
 	pRight, bRight := 0, len(t)
 
