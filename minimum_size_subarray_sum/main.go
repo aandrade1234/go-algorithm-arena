@@ -17,7 +17,7 @@ func minSubArrayLen(target int, nums []int) int {
 	sum := 0
 	minLength := math.MaxInt
 
-	for right := range len(nums) {
+	for right := range nums {
 		sum += nums[right]
 
 		for sum >= target {
