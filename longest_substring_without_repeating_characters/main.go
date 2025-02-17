@@ -10,6 +10,7 @@ func main() {
 	fmt.Println(lengthOfLongestSubstring("pwwkew"))
 }
 
+// Time complexity O(n), space complexity O(n).
 func lengthOfLongestSubstring(s string) int {
 	charMap := make(map[byte]int)
 	maxLength, left := 0, 0
